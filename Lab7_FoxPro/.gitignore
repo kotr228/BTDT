@@ -1,0 +1,56 @@
+# Visual FoxPro files
+*.fxp
+*.FXP
+*.bak
+*.BAK
+*.tmp
+*.TMP
+*.err
+*.ERR
+*.log
+*.LOG
+
+# Database runtime files (keep the structure files)
+*.cdx
+*.CDX
+*.fpt
+*.FPT
+*.idx
+*.IDX
+
+# Backup files
+*.bk?
+*.BK?
+*~
+
+# Project compiled files
+*.app
+*.APP
+*.exe
+*.EXE
+*.dll
+*.DLL
+
+# Debug files
+*.pjt
+*.PJT
+
+# Lock files
+*.lck
+*.LCK
+
+# Temporary directories
+temp/
+tmp/
+backup/
+
+# Keep structure but ignore data in some cases
+# (uncomment if you want to ignore database files)
+# *.dbc
+# *.DBC
+# *.dbf
+# *.DBF
+# *.dct
+# *.DCT
+# *.dcx
+# *.DCX
