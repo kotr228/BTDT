@@ -1,0 +1,19 @@
+# EditorConfig для правильного відображення кирилиці
+root = true
+
+# Всі файли
+[*]
+charset = utf-8-bom
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# C++ файли
+[*.{h,cpp}]
+charset = utf-8-bom
+indent_style = space
+indent_size = 4
+
+# Solution та Project файли
+[*.{sln,vcxproj}]
+charset = utf-8-bom

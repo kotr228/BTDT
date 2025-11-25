@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "AtbashCipher.h"
 
@@ -102,6 +102,7 @@ namespace AtbashCipherApp {
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(784, 561);
             this->Controls->Add(this->tabControl1);
+            this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular));
             this->Name = L"MainForm";
             this->Text = L"Шифрування Атбаш - Лабораторна робота №5";
             this->tabControl1->ResumeLayout(false);
