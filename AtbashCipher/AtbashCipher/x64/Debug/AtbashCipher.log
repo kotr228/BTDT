@@ -1,0 +1,6 @@
+﻿  MainForm.cpp
+  AtbashCipher.cpp
+  .NETFramework,Version=v4.8.AssemblyAttributes.cpp
+  Generating Code...
+  MainForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  AtbashCipher.vcxproj -> C:\Users\trock\Desktop\BTDT\AtbashCipher\x64\Debug\AtbashCipher.exe

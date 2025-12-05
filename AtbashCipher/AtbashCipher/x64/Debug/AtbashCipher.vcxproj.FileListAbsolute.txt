@@ -1,0 +1,3 @@
+C:\Users\trock\Desktop\BTDT\AtbashCipher\AtbashCipher\x64\Debug\AtbashCipher.vcxproj.AssemblyReference.cache
+C:\Users\trock\Desktop\BTDT\AtbashCipher\AtbashCipher\x64\Debug\AtbashCipher.MainForm.resources
+C:\Users\trock\Desktop\BTDT\AtbashCipher\AtbashCipher\x64\Debug\AtbashCipher.vcxproj.GenerateResource.cache

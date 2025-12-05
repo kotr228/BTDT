@@ -1,0 +1,91 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3F3E8E-9F3E-4E3E-9F3E-8F3F3E8E9F3E}|AtbashCipher.vcxproj|C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\AtbashCipher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F3F3E8E-9F3E-4E3E-9F3E-8F3F3E8E9F3E}|AtbashCipher.vcxproj|solutionrelative:AtbashCipher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3F3E8E-9F3E-4E3E-9F3E-8F3F3E8E9F3E}|AtbashCipher.vcxproj|C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\AtbashCipher.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F3F3E8E-9F3E-4E3E-9F3E-8F3F3E8E9F3E}|AtbashCipher.vcxproj|solutionrelative:AtbashCipher.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3F3E8E-9F3E-4E3E-9F3E-8F3F3E8E9F3E}|AtbashCipher.vcxproj|C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\MainForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F3F3E8E-9F3E-4E3E-9F3E-8F3F3E8E9F3E}|AtbashCipher.vcxproj|solutionrelative:MainForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3F3E8E-9F3E-4E3E-9F3E-8F3F3E8E9F3E}|AtbashCipher.vcxproj|C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\MainForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form",
+      "RelativeMoniker": "D:0:0:{8F3F3E8E-9F3E-4E3E-9F3E-8F3F3E8E9F3E}|AtbashCipher.vcxproj|solutionrelative:MainForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AtbashCipher.cpp",
+              "DocumentMoniker": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\AtbashCipher.cpp",
+              "RelativeDocumentMoniker": "AtbashCipher.cpp",
+              "ToolTip": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\AtbashCipher.cpp",
+              "RelativeToolTip": "AtbashCipher.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-05T06:12:53.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AtbashCipher.h",
+              "DocumentMoniker": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\AtbashCipher.h",
+              "RelativeDocumentMoniker": "AtbashCipher.h",
+              "ToolTip": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\AtbashCipher.h",
+              "RelativeToolTip": "AtbashCipher.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-05T06:12:50.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainForm.cpp",
+              "DocumentMoniker": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\MainForm.cpp",
+              "RelativeDocumentMoniker": "MainForm.cpp",
+              "ToolTip": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\MainForm.cpp",
+              "RelativeToolTip": "MainForm.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-05T06:12:48.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainForm.h [Design]",
+              "DocumentMoniker": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\MainForm.h",
+              "RelativeDocumentMoniker": "MainForm.h",
+              "ToolTip": "C:\\Users\\trock\\Desktop\\BTDT\\AtbashCipher\\MainForm.h [Design]",
+              "RelativeToolTip": "MainForm.h [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-05T06:12:43.939Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
