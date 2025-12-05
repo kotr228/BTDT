@@ -1,7 +1,11 @@
 ﻿#pragma once
 
+#using <System.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Drawing.dll>
+#using <System.Data.dll>
+
 #include "PlayfairCipher.h"
-#include <msclr/marshal_cppstd.h>
 
 namespace PlayfairCipherLib {
 

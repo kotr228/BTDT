@@ -1,11 +1,15 @@
-﻿#include "MainForm.h"
+﻿#using <System.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Drawing.dll>
+
+#include "MainForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace PlayfairCipherLib;
 
 [STAThreadAttribute]
-int main(array<String^>^ args)
+int main(array<System::String^>^ args)
 {
     // Увімкнення візуальних стилів
     Application::EnableVisualStyles();

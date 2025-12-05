@@ -1,8 +1,6 @@
 ﻿#pragma once
 
-#include <string>
-#include <algorithm>
-#include <vector>
+#using <System.dll>
 
 using namespace System;
 using namespace System::Text;
