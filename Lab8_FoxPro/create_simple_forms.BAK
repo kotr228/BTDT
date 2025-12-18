@@ -1,6 +1,6 @@
 *----------------------------------------------------------
-* Лабораторна робота №8 - Створення простих форм
-* Форми для перегляду даних з БД (Lab7)
+* Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР° СЂРѕР±РѕС‚Р° в„–8 - РЎС‚РІРѕСЂРµРЅРЅСЏ РїСЂРѕСЃС‚РёС… С„РѕСЂРј
+* Р¤РѕСЂРјРё РґР»СЏ РїРµСЂРµРіР»СЏРґСѓ РґР°РЅРёС… Р· Р‘Р” (Lab7)
 *----------------------------------------------------------
 CLOSE DATABASES ALL
 CLEAR ALL
@@ -15,14 +15,14 @@ IF !DIRECTORY(lcPath)
 ENDIF
 SET DEFAULT TO (lcPath)
 
-* Копіювання БД з Lab7 (якщо потрібно)
-* Примітка: У реальному сценарії можна просто відкривати БД з Lab7
+* РљРѕРїС–СЋРІР°РЅРЅСЏ Р‘Р” Р· Lab7 (СЏРєС‰Рѕ РїРѕС‚СЂС–Р±РЅРѕ)
+* РџСЂРёРјС–С‚РєР°: РЈ СЂРµР°Р»СЊРЅРѕРјСѓ СЃС†РµРЅР°СЂС–С— РјРѕР¶РЅР° РїСЂРѕСЃС‚Рѕ РІС–РґРєСЂРёРІР°С‚Рё Р‘Р” Р· Lab7
 
-MESSAGEBOX("Створюємо прості форми для перегляду даних." + CHR(13) + ;
-           "Будь ласка, не закривайте програму!", 48, "Lab 8")
+MESSAGEBOX("РЎС‚РІРѕСЂСЋС”РјРѕ РїСЂРѕСЃС‚С– С„РѕСЂРјРё РґР»СЏ РїРµСЂРµРіР»СЏРґСѓ РґР°РЅРёС…." + CHR(13) + ;
+           "Р‘СѓРґСЊ Р»Р°СЃРєР°, РЅРµ Р·Р°РєСЂРёРІР°Р№С‚Рµ РїСЂРѕРіСЂР°РјСѓ!", 48, "Lab 8")
 
 *==========================================================
-* 1. ГОЛОВНЕ МЕНЮ (frm_main_menu.scx)
+* 1. Р“РћР›РћР’РќР• РњР•РќР® (frm_main_menu.scx)
 *==========================================================
 DELETE FILE frm_main_menu.scx
 DELETE FILE frm_main_menu.sct
@@ -33,15 +33,15 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Головне Меню (Lab 8)"
+    .Caption = "Р“РѕР»РѕРІРЅРµ РњРµРЅСЋ (Lab 8)"
     .AutoCenter = .T.
     .Width = 350
     .Height = 300
     .BackColor = RGB(240, 240, 255)
 
-    * Заголовок
+    * Р—Р°РіРѕР»РѕРІРѕРє
     .AddObject("lblTitle", "Label")
-    .lblTitle.Caption = "Система перегляду залізничних квитків"
+    .lblTitle.Caption = "РЎРёСЃС‚РµРјР° РїРµСЂРµРіР»СЏРґСѓ Р·Р°Р»С–Р·РЅРёС‡РЅРёС… РєРІРёС‚РєС–РІ"
     .lblTitle.FontBold = .T.
     .lblTitle.FontSize = 11
     .lblTitle.Top = 20
@@ -51,9 +51,9 @@ WITH loForm
     .lblTitle.Alignment = 2
     .lblTitle.Visible = .T.
 
-    * Кнопка "Станції"
+    * РљРЅРѕРїРєР° "РЎС‚Р°РЅС†С–С—"
     .AddObject("cmdStations", "CommandButton")
-    .cmdStations.Caption = "Перегляд станцій"
+    .cmdStations.Caption = "РџРµСЂРµРіР»СЏРґ СЃС‚Р°РЅС†С–Р№"
     .cmdStations.Top = 80
     .cmdStations.Left = 75
     .cmdStations.Width = 200
@@ -61,9 +61,9 @@ WITH loForm
     .cmdStations.Visible = .T.
     .cmdStations.WriteMethod("Click", "DO FORM frm_stations")
 
-    * Кнопка "Пасажири"
+    * РљРЅРѕРїРєР° "РџР°СЃР°Р¶РёСЂРё"
     .AddObject("cmdPassengers", "CommandButton")
-    .cmdPassengers.Caption = "Перегляд пасажирів"
+    .cmdPassengers.Caption = "РџРµСЂРµРіР»СЏРґ РїР°СЃР°Р¶РёСЂС–РІ"
     .cmdPassengers.Top = 130
     .cmdPassengers.Left = 75
     .cmdPassengers.Width = 200
@@ -71,9 +71,9 @@ WITH loForm
     .cmdPassengers.Visible = .T.
     .cmdPassengers.WriteMethod("Click", "DO FORM frm_passengers")
 
-    * Кнопка "Маршрути"
+    * РљРЅРѕРїРєР° "РњР°СЂС€СЂСѓС‚Рё"
     .AddObject("cmdRoutes", "CommandButton")
-    .cmdRoutes.Caption = "Перегляд маршрутів"
+    .cmdRoutes.Caption = "РџРµСЂРµРіР»СЏРґ РјР°СЂС€СЂСѓС‚С–РІ"
     .cmdRoutes.Top = 180
     .cmdRoutes.Left = 75
     .cmdRoutes.Width = 200
@@ -81,9 +81,9 @@ WITH loForm
     .cmdRoutes.Visible = .T.
     .cmdRoutes.WriteMethod("Click", "DO FORM frm_routes")
 
-    * Кнопка "Вихід"
+    * РљРЅРѕРїРєР° "Р’РёС…С–Рґ"
     .AddObject("cmdExit", "CommandButton")
-    .cmdExit.Caption = "Вихід"
+    .cmdExit.Caption = "Р’РёС…С–Рґ"
     .cmdExit.Top = 230
     .cmdExit.Left = 125
     .cmdExit.Width = 100
@@ -97,7 +97,7 @@ DOEVENTS
 =INKEY(1)
 
 *==========================================================
-* 2. ФОРМА ПЕРЕГЛЯДУ СТАНЦІЙ (frm_stations.scx)
+* 2. Р¤РћР РњРђ РџР•Р Р•Р“Р›РЇР”РЈ РЎРўРђРќР¦Р†Р™ (frm_stations.scx)
 *==========================================================
 DELETE FILE frm_stations.scx
 DELETE FILE frm_stations.sct
@@ -108,13 +108,13 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Перегляд станцій"
+    .Caption = "РџРµСЂРµРіР»СЏРґ СЃС‚Р°РЅС†С–Р№"
     .Width = 600
     .Height = 450
     .AutoCenter = .T.
     .DataSession = 2
 
-    * Відкриваємо БД в Load
+    * Р’С–РґРєСЂРёРІР°С”РјРѕ Р‘Р” РІ Load
     LOCAL lcLoad
     lcLoad = [SET EXCLUSIVE OFF] + CHR(13) + ;
              [SET DEFAULT TO "C:\VFP_Lab7"] + CHR(13) + ;
@@ -122,9 +122,9 @@ WITH loForm
              [USE Stations IN 0 SHARED]
     .WriteMethod("Load", lcLoad)
 
-    * Заголовок
+    * Р—Р°РіРѕР»РѕРІРѕРє
     .AddObject("lblTitle", "Label")
-    .lblTitle.Caption = "Список залізничних станцій"
+    .lblTitle.Caption = "РЎРїРёСЃРѕРє Р·Р°Р»С–Р·РЅРёС‡РЅРёС… СЃС‚Р°РЅС†С–Р№"
     .lblTitle.FontBold = .T.
     .lblTitle.FontSize = 10
     .lblTitle.Top = 10
@@ -132,7 +132,7 @@ WITH loForm
     .lblTitle.Width = 300
     .lblTitle.Visible = .T.
 
-    * Grid для відображення даних
+    * Grid РґР»СЏ РІС–РґРѕР±СЂР°Р¶РµРЅРЅСЏ РґР°РЅРёС…
     .AddObject("grdStations", "Grid")
     .grdStations.RecordSourceType = 1
     .grdStations.RecordSource = "Stations"
@@ -143,9 +143,9 @@ WITH loForm
     .grdStations.ReadOnly = .T.
     .grdStations.Visible = .T.
 
-    * Кнопка "Закрити"
+    * РљРЅРѕРїРєР° "Р—Р°РєСЂРёС‚Рё"
     .AddObject("cmdClose", "CommandButton")
-    .cmdClose.Caption = "Закрити"
+    .cmdClose.Caption = "Р—Р°РєСЂРёС‚Рё"
     .cmdClose.Top = 400
     .cmdClose.Left = 250
     .cmdClose.Width = 100
@@ -158,7 +158,7 @@ DOEVENTS
 =INKEY(1)
 
 *==========================================================
-* 3. ФОРМА ПЕРЕГЛЯДУ ПАСАЖИРІВ (frm_passengers.scx)
+* 3. Р¤РћР РњРђ РџР•Р Р•Р“Р›РЇР”РЈ РџРђРЎРђР–РР Р†Р’ (frm_passengers.scx)
 *==========================================================
 DELETE FILE frm_passengers.scx
 DELETE FILE frm_passengers.sct
@@ -169,13 +169,13 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Перегляд пасажирів"
+    .Caption = "РџРµСЂРµРіР»СЏРґ РїР°СЃР°Р¶РёСЂС–РІ"
     .Width = 650
     .Height = 500
     .AutoCenter = .T.
     .DataSession = 2
 
-    * Відкриваємо БД в Load
+    * Р’С–РґРєСЂРёРІР°С”РјРѕ Р‘Р” РІ Load
     LOCAL lcLoad
     lcLoad = [SET EXCLUSIVE OFF] + CHR(13) + ;
              [SET DEFAULT TO "C:\VFP_Lab7"] + CHR(13) + ;
@@ -183,9 +183,9 @@ WITH loForm
              [USE Passengers IN 0 SHARED]
     .WriteMethod("Load", lcLoad)
 
-    * Заголовок
+    * Р—Р°РіРѕР»РѕРІРѕРє
     .AddObject("lblTitle", "Label")
-    .lblTitle.Caption = "Список пасажирів"
+    .lblTitle.Caption = "РЎРїРёСЃРѕРє РїР°СЃР°Р¶РёСЂС–РІ"
     .lblTitle.FontBold = .T.
     .lblTitle.FontSize = 10
     .lblTitle.Top = 10
@@ -193,9 +193,9 @@ WITH loForm
     .lblTitle.Width = 300
     .lblTitle.Visible = .T.
 
-    * Пошук
+    * РџРѕС€СѓРє
     .AddObject("lblSearch", "Label")
-    .lblSearch.Caption = "Пошук за прізвищем:"
+    .lblSearch.Caption = "РџРѕС€СѓРє Р·Р° РїСЂС–Р·РІРёС‰РµРј:"
     .lblSearch.Top = 45
     .lblSearch.Left = 20
     .lblSearch.Width = 150
@@ -208,7 +208,7 @@ WITH loForm
     .txtSearch.Visible = .T.
 
     .AddObject("cmdSearch", "CommandButton")
-    .cmdSearch.Caption = "Знайти"
+    .cmdSearch.Caption = "Р—РЅР°Р№С‚Рё"
     .cmdSearch.Top = 40
     .cmdSearch.Left = 340
     .cmdSearch.Width = 80
@@ -218,12 +218,12 @@ WITH loForm
         [LOCATE FOR UPPER(ALLTRIM(lname)) = UPPER(ALLTRIM(THISFORM.txtSearch.Value))] + CHR(13) + ;
         [IF FOUND()] + CHR(13) + ;
         [   THISFORM.grdPassengers.Refresh()] + CHR(13) + ;
-        [   MESSAGEBOX("Пасажира знайдено!", 64)] + CHR(13) + ;
+        [   MESSAGEBOX("РџР°СЃР°Р¶РёСЂР° Р·РЅР°Р№РґРµРЅРѕ!", 64)] + CHR(13) + ;
         [ELSE] + CHR(13) + ;
-        [   MESSAGEBOX("Пасажира не знайдено", 48)] + CHR(13) + ;
+        [   MESSAGEBOX("РџР°СЃР°Р¶РёСЂР° РЅРµ Р·РЅР°Р№РґРµРЅРѕ", 48)] + CHR(13) + ;
         [ENDIF])
 
-    * Grid для відображення даних
+    * Grid РґР»СЏ РІС–РґРѕР±СЂР°Р¶РµРЅРЅСЏ РґР°РЅРёС…
     .AddObject("grdPassengers", "Grid")
     .grdPassengers.RecordSourceType = 1
     .grdPassengers.RecordSource = "Passengers"
@@ -234,9 +234,9 @@ WITH loForm
     .grdPassengers.ReadOnly = .T.
     .grdPassengers.Visible = .T.
 
-    * Кнопка "Закрити"
+    * РљРЅРѕРїРєР° "Р—Р°РєСЂРёС‚Рё"
     .AddObject("cmdClose", "CommandButton")
-    .cmdClose.Caption = "Закрити"
+    .cmdClose.Caption = "Р—Р°РєСЂРёС‚Рё"
     .cmdClose.Top = 450
     .cmdClose.Left = 275
     .cmdClose.Width = 100
@@ -249,7 +249,7 @@ DOEVENTS
 =INKEY(1)
 
 *==========================================================
-* 4. ФОРМА ПЕРЕГЛЯДУ МАРШРУТІВ (frm_routes.scx)
+* 4. Р¤РћР РњРђ РџР•Р Р•Р“Р›РЇР”РЈ РњРђР РЁР РЈРўР†Р’ (frm_routes.scx)
 *==========================================================
 DELETE FILE frm_routes.scx
 DELETE FILE frm_routes.sct
@@ -260,13 +260,13 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Перегляд маршрутів"
+    .Caption = "РџРµСЂРµРіР»СЏРґ РјР°СЂС€СЂСѓС‚С–РІ"
     .Width = 600
     .Height = 450
     .AutoCenter = .T.
     .DataSession = 2
 
-    * Відкриваємо БД в Load
+    * Р’С–РґРєСЂРёРІР°С”РјРѕ Р‘Р” РІ Load
     LOCAL lcLoad
     lcLoad = [SET EXCLUSIVE OFF] + CHR(13) + ;
              [SET DEFAULT TO "C:\VFP_Lab7"] + CHR(13) + ;
@@ -274,9 +274,9 @@ WITH loForm
              [USE Routes IN 0 SHARED]
     .WriteMethod("Load", lcLoad)
 
-    * Заголовок
+    * Р—Р°РіРѕР»РѕРІРѕРє
     .AddObject("lblTitle", "Label")
-    .lblTitle.Caption = "Список маршрутів"
+    .lblTitle.Caption = "РЎРїРёСЃРѕРє РјР°СЂС€СЂСѓС‚С–РІ"
     .lblTitle.FontBold = .T.
     .lblTitle.FontSize = 10
     .lblTitle.Top = 10
@@ -284,9 +284,9 @@ WITH loForm
     .lblTitle.Width = 300
     .lblTitle.Visible = .T.
 
-    * Фільтр за відстанню
+    * Р¤С–Р»СЊС‚СЂ Р·Р° РІС–РґСЃС‚Р°РЅРЅСЋ
     .AddObject("lblFilter", "Label")
-    .lblFilter.Caption = "Відстань більше:"
+    .lblFilter.Caption = "Р’С–РґСЃС‚Р°РЅСЊ Р±С–Р»СЊС€Рµ:"
     .lblFilter.Top = 45
     .lblFilter.Left = 20
     .lblFilter.Width = 120
@@ -300,7 +300,7 @@ WITH loForm
     .txtDistance.Visible = .T.
 
     .AddObject("cmdFilter", "CommandButton")
-    .cmdFilter.Caption = "Застосувати"
+    .cmdFilter.Caption = "Р—Р°СЃС‚РѕСЃСѓРІР°С‚Рё"
     .cmdFilter.Top = 40
     .cmdFilter.Left = 240
     .cmdFilter.Width = 100
@@ -310,10 +310,10 @@ WITH loForm
         [SET FILTER TO distance > VAL(THISFORM.txtDistance.Value)] + CHR(13) + ;
         [GO TOP] + CHR(13) + ;
         [THISFORM.grdRoutes.Refresh()] + CHR(13) + ;
-        [MESSAGEBOX("Фільтр застосовано", 64)])
+        [MESSAGEBOX("Р¤С–Р»СЊС‚СЂ Р·Р°СЃС‚РѕСЃРѕРІР°РЅРѕ", 64)])
 
     .AddObject("cmdClearFilter", "CommandButton")
-    .cmdClearFilter.Caption = "Скасувати"
+    .cmdClearFilter.Caption = "РЎРєР°СЃСѓРІР°С‚Рё"
     .cmdClearFilter.Top = 40
     .cmdClearFilter.Left = 350
     .cmdClearFilter.Width = 100
@@ -323,9 +323,9 @@ WITH loForm
         [SET FILTER TO] + CHR(13) + ;
         [GO TOP] + CHR(13) + ;
         [THISFORM.grdRoutes.Refresh()] + CHR(13) + ;
-        [MESSAGEBOX("Фільтр скасовано", 64)])
+        [MESSAGEBOX("Р¤С–Р»СЊС‚СЂ СЃРєР°СЃРѕРІР°РЅРѕ", 64)])
 
-    * Grid для відображення даних
+    * Grid РґР»СЏ РІС–РґРѕР±СЂР°Р¶РµРЅРЅСЏ РґР°РЅРёС…
     .AddObject("grdRoutes", "Grid")
     .grdRoutes.RecordSourceType = 1
     .grdRoutes.RecordSource = "Routes"
@@ -336,9 +336,9 @@ WITH loForm
     .grdRoutes.ReadOnly = .T.
     .grdRoutes.Visible = .T.
 
-    * Кнопка "Закрити"
+    * РљРЅРѕРїРєР° "Р—Р°РєСЂРёС‚Рё"
     .AddObject("cmdClose", "CommandButton")
-    .cmdClose.Caption = "Закрити"
+    .cmdClose.Caption = "Р—Р°РєСЂРёС‚Рё"
     .cmdClose.Top = 410
     .cmdClose.Left = 250
     .cmdClose.Width = 100
@@ -350,10 +350,10 @@ KEYBOARD '{CTRL+W}' PLAIN
 DOEVENTS
 =INKEY(1)
 
-MESSAGEBOX("ГОТОВО! Форми створено." + CHR(13) + ;
-           "Створено 4 форми:" + CHR(13) + ;
-           "- frm_main_menu.scx (головне меню)" + CHR(13) + ;
-           "- frm_stations.scx (станції)" + CHR(13) + ;
-           "- frm_passengers.scx (пасажири + пошук)" + CHR(13) + ;
-           "- frm_routes.scx (маршрути + фільтр)" + CHR(13) + CHR(13) + ;
-           "Запустіть: DO FORM frm_main_menu", 64, "Lab 8 - Успіх")
+MESSAGEBOX("Р“РћРўРћР’Рћ! Р¤РѕСЂРјРё СЃС‚РІРѕСЂРµРЅРѕ." + CHR(13) + ;
+           "РЎС‚РІРѕСЂРµРЅРѕ 4 С„РѕСЂРјРё:" + CHR(13) + ;
+           "- frm_main_menu.scx (РіРѕР»РѕРІРЅРµ РјРµРЅСЋ)" + CHR(13) + ;
+           "- frm_stations.scx (СЃС‚Р°РЅС†С–С—)" + CHR(13) + ;
+           "- frm_passengers.scx (РїР°СЃР°Р¶РёСЂРё + РїРѕС€СѓРє)" + CHR(13) + ;
+           "- frm_routes.scx (РјР°СЂС€СЂСѓС‚Рё + С„С–Р»СЊС‚СЂ)" + CHR(13) + CHR(13) + ;
+           "Р—Р°РїСѓСЃС‚С–С‚СЊ: DO FORM frm_main_menu", 64, "Lab 8 - РЈСЃРїС–С…")

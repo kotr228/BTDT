@@ -1,6 +1,6 @@
 *----------------------------------------------------------
-* Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР° СЂРѕР±РѕС‚Р° в„–7 - РЎС‚РІРѕСЂРµРЅРЅСЏ РїСЂРѕСЃС‚РѕС— Р‘Р”
-* РЎС‚РІРѕСЂРµРЅРЅСЏ Р±Р°Р·Рё РґР°РЅРёС… Р· Р±Р°Р·РѕРІРёРјРё С‚Р°Р±Р»РёС†СЏРјРё
+* Лабораторна робота №7 - Створення простої БД
+* Створення бази даних з базовими таблицями
 *----------------------------------------------------------
 CLOSE DATABASES ALL
 SET SAFETY OFF
@@ -10,34 +10,34 @@ SET TALK OFF
 LOCAL lcPath
 lcPath = "C:\VFP_Lab7"
 
-* РЎС‚РІРѕСЂРµРЅРЅСЏ СЂРѕР±РѕС‡РѕС— РїР°РїРєРё
+* Створення робочої папки
 IF !DIRECTORY(lcPath)
     MD (lcPath)
 ENDIF
 SET DEFAULT TO (lcPath)
 
-* РЎС‚РІРѕСЂРµРЅРЅСЏ Р‘Р°Р·Рё Р”Р°РЅРёС…
+* Створення Бази Даних
 CREATE DATABASE TktDB_Simple
 
 *----------------------------------------------------------
-* РЎС‚РІРѕСЂРµРЅРЅСЏ Р±Р°Р·РѕРІРёС… С‚Р°Р±Р»РёС†СЊ
+* Створення базових таблиць
 *----------------------------------------------------------
 
-* РўР°Р±Р»РёС†СЏ СЃС‚Р°РЅС†С–Р№
+* Таблиця станцій
 CREATE TABLE Stations ( ;
     stat_id I AUTOINC PRIMARY KEY, ;
     name C(50), ;
     city C(30), ;
     region C(30))
 
-* РўР°Р±Р»РёС†СЏ С‚РёРїС–РІ РІР°РіРѕРЅС–РІ
+* Таблиця типів вагонів
 CREATE TABLE CarTypes ( ;
     ctype_id I AUTOINC PRIMARY KEY, ;
     type_name C(30), ;
     base_cost Y, ;
     capacity I)
 
-* РўР°Р±Р»РёС†СЏ РїР°СЃР°Р¶РёСЂС–РІ
+* Таблиця пасажирів
 CREATE TABLE Passengers ( ;
     pass_id I AUTOINC PRIMARY KEY, ;
     lname C(30), ;
@@ -46,7 +46,7 @@ CREATE TABLE Passengers ( ;
     phone C(20), ;
     email C(50))
 
-* РўР°Р±Р»РёС†СЏ РјР°СЂС€СЂСѓС‚С–РІ
+* Таблиця маршрутів
 CREATE TABLE Routes ( ;
     route_id I AUTOINC PRIMARY KEY, ;
     route_name C(50), ;
@@ -55,47 +55,47 @@ CREATE TABLE Routes ( ;
     distance I)
 
 *----------------------------------------------------------
-* РќР°РїРѕРІРЅРµРЅРЅСЏ С‚Р°Р±Р»РёС†СЊ РґР°РЅРёРјРё
+* Наповнення таблиць даними
 *----------------------------------------------------------
 
-* РЎС‚Р°РЅС†С–С—
-INSERT INTO Stations (name, city, region) VALUES ("РљРёС—РІ-РџР°СЃР°Р¶РёСЂСЃСЊРєРёР№", "РљРёС—РІ", "РљРёС—РІСЃСЊРєР° РѕР±Р».")
-INSERT INTO Stations (name, city, region) VALUES ("Р›СЊРІС–РІ-Р“РѕР»РѕРІРЅРёР№", "Р›СЊРІС–РІ", "Р›СЊРІС–РІСЃСЊРєР° РѕР±Р».")
-INSERT INTO Stations (name, city, region) VALUES ("РћРґРµСЃР°-Р“РѕР»РѕРІРЅР°", "РћРґРµСЃР°", "РћРґРµСЃСЊРєР° РѕР±Р».")
-INSERT INTO Stations (name, city, region) VALUES ("РҐР°СЂРєС–РІ-РџР°СЃР°Р¶РёСЂСЃСЊРєРёР№", "РҐР°СЂРєС–РІ", "РҐР°СЂРєС–РІСЃСЊРєР° РѕР±Р».")
-INSERT INTO Stations (name, city, region) VALUES ("Р”РЅС–РїСЂРѕ-Р“РѕР»РѕРІРЅРёР№", "Р”РЅС–РїСЂРѕ", "Р”РЅС–РїСЂРѕРїРµС‚СЂРѕРІСЃСЊРєР° РѕР±Р».")
-INSERT INTO Stations (name, city, region) VALUES ("Р—Р°РїРѕСЂС–Р¶Р¶СЏ-1", "Р—Р°РїРѕСЂС–Р¶Р¶СЏ", "Р—Р°РїРѕСЂС–Р·СЊРєР° РѕР±Р».")
-INSERT INTO Stations (name, city, region) VALUES ("Р’С–РЅРЅРёС†СЏ", "Р’С–РЅРЅРёС†СЏ", "Р’С–РЅРЅРёС†СЊРєР° РѕР±Р».")
-INSERT INTO Stations (name, city, region) VALUES ("РџРѕР»С‚Р°РІР°-РџС–РІРґРµРЅРЅР°", "РџРѕР»С‚Р°РІР°", "РџРѕР»С‚Р°РІСЃСЊРєР° РѕР±Р».")
+* Станції
+INSERT INTO Stations (name, city, region) VALUES ("Київ-Пасажирський", "Київ", "Київська обл.")
+INSERT INTO Stations (name, city, region) VALUES ("Львів-Головний", "Львів", "Львівська обл.")
+INSERT INTO Stations (name, city, region) VALUES ("Одеса-Головна", "Одеса", "Одеська обл.")
+INSERT INTO Stations (name, city, region) VALUES ("Харків-Пасажирський", "Харків", "Харківська обл.")
+INSERT INTO Stations (name, city, region) VALUES ("Дніпро-Головний", "Дніпро", "Дніпропетровська обл.")
+INSERT INTO Stations (name, city, region) VALUES ("Запоріжжя-1", "Запоріжжя", "Запорізька обл.")
+INSERT INTO Stations (name, city, region) VALUES ("Вінниця", "Вінниця", "Вінницька обл.")
+INSERT INTO Stations (name, city, region) VALUES ("Полтава-Південна", "Полтава", "Полтавська обл.")
 
-* РўРёРїРё РІР°РіРѕРЅС–РІ
-INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("РџР»Р°С†РєР°СЂС‚", 200.00, 54)
-INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("РљСѓРїРµ", 450.00, 36)
-INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("Р›СЋРєСЃ (РЎР’)", 1200.00, 18)
-INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("РЎРёРґСЏС‡РёР№ 1-РєР»Р°СЃ", 350.00, 68)
-INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("РЎРёРґСЏС‡РёР№ 2-РєР»Р°СЃ", 180.00, 80)
+* Типи вагонів
+INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("Плацкарт", 200.00, 54)
+INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("Купе", 450.00, 36)
+INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("Люкс (СВ)", 1200.00, 18)
+INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("Сидячий 1-клас", 350.00, 68)
+INSERT INTO CarTypes (type_name, base_cost, capacity) VALUES ("Сидячий 2-клас", 180.00, 80)
 
-* РџР°СЃР°Р¶РёСЂРё (СѓРєСЂР°С—РЅСЃСЊРєС– РїРёСЃСЊРјРµРЅРЅРёРєРё)
-INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("РЁРµРІС‡РµРЅРєРѕ", "РўР°СЂР°СЃ", "Р“СЂРёРіРѕСЂРѕРІРёС‡", "050-111-11-11", "t.shevchenko@ukr.net")
-INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Р¤СЂР°РЅРєРѕ", "Р†РІР°РЅ", "РЇРєРѕРІРёС‡", "067-222-22-22", "i.franko@ukr.net")
-INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("РЈРєСЂР°С—РЅРєР°", "Р›РµСЃСЏ", "РџРµС‚СЂС–РІРЅР°", "063-333-33-33", "l.ukrainka@ukr.net")
-INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("РљРѕС‚Р»СЏСЂРµРІСЃСЊРєРёР№", "Р†РІР°РЅ", "РџРµС‚СЂРѕРІРёС‡", "095-444-44-44", "i.kotliarevskyi@ukr.net")
-INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("РљРѕСЃС‚РµРЅРєРѕ", "Р›С–РЅР°", "Р’Р°СЃРёР»С–РІРЅР°", "099-555-55-55", "l.kostenko@ukr.net")
-INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("РЎС‚СѓСЃ", "Р’Р°СЃРёР»СЊ", "РЎРµРјРµРЅРѕРІРёС‡", "050-666-66-66", "v.stus@ukr.net")
-INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Р РёР»СЊСЃСЊРєРёР№", "РњР°РєСЃРёРј", "РўР°РґРµР№РѕРІРёС‡", "067-777-77-77", "m.rylskyi@ukr.net")
+* Пасажири (українські письменники)
+INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Шевченко", "Тарас", "Григорович", "050-111-11-11", "t.shevchenko@ukr.net")
+INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Франко", "Іван", "Якович", "067-222-22-22", "i.franko@ukr.net")
+INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Українка", "Леся", "Петрівна", "063-333-33-33", "l.ukrainka@ukr.net")
+INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Котляревський", "Іван", "Петрович", "095-444-44-44", "i.kotliarevskyi@ukr.net")
+INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Костенко", "Ліна", "Василівна", "099-555-55-55", "l.kostenko@ukr.net")
+INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Стус", "Василь", "Семенович", "050-666-66-66", "v.stus@ukr.net")
+INSERT INTO Passengers (lname, fname, pname, phone, email) VALUES ("Рильський", "Максим", "Тадейович", "067-777-77-77", "m.rylskyi@ukr.net")
 
-* РњР°СЂС€СЂСѓС‚Рё
-INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("РљРёС—РІ - Р›СЊРІС–РІ", "РљРёС—РІ-РџР°СЃР°Р¶РёСЂСЃСЊРєРёР№", "Р›СЊРІС–РІ-Р“РѕР»РѕРІРЅРёР№", 540)
-INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("РљРёС—РІ - РћРґРµСЃР°", "РљРёС—РІ-РџР°СЃР°Р¶РёСЂСЃСЊРєРёР№", "РћРґРµСЃР°-Р“РѕР»РѕРІРЅР°", 440)
-INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("РљРёС—РІ - РҐР°СЂРєС–РІ", "РљРёС—РІ-РџР°СЃР°Р¶РёСЂСЃСЊРєРёР№", "РҐР°СЂРєС–РІ-РџР°СЃР°Р¶РёСЂСЃСЊРєРёР№", 480)
-INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("Р›СЊРІС–РІ - РћРґРµСЃР°", "Р›СЊРІС–РІ-Р“РѕР»РѕРІРЅРёР№", "РћРґРµСЃР°-Р“РѕР»РѕРІРЅР°", 790)
-INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("РҐР°СЂРєС–РІ - Р”РЅС–РїСЂРѕ", "РҐР°СЂРєС–РІ-РџР°СЃР°Р¶РёСЂСЃСЊРєРёР№", "Р”РЅС–РїСЂРѕ-Р“РѕР»РѕРІРЅРёР№", 220)
+* Маршрути
+INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("Київ - Львів", "Київ-Пасажирський", "Львів-Головний", 540)
+INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("Київ - Одеса", "Київ-Пасажирський", "Одеса-Головна", 440)
+INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("Київ - Харків", "Київ-Пасажирський", "Харків-Пасажирський", 480)
+INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("Львів - Одеса", "Львів-Головний", "Одеса-Головна", 790)
+INSERT INTO Routes (route_name, orig_station, dest_station, distance) VALUES ("Харків - Дніпро", "Харків-Пасажирський", "Дніпро-Головний", 220)
 
 CLOSE DATABASES ALL
 
-MESSAGEBOX("Р‘Р°Р·Сѓ РґР°РЅРёС… СѓСЃРїС–С€РЅРѕ СЃС‚РІРѕСЂРµРЅРѕ!" + CHR(13) + ;
-           "РЎС‚РІРѕСЂРµРЅРѕ 4 С‚Р°Р±Р»РёС†С–:" + CHR(13) + ;
-           "- Stations (8 Р·Р°РїРёСЃС–РІ)" + CHR(13) + ;
-           "- CarTypes (5 Р·Р°РїРёСЃС–РІ)" + CHR(13) + ;
-           "- Passengers (7 Р·Р°РїРёСЃС–РІ)" + CHR(13) + ;
-           "- Routes (5 Р·Р°РїРёСЃС–РІ)", 64, "Lab 7 - Р“РѕС‚РѕРІРѕ")
+MESSAGEBOX("Базу даних успішно створено!" + CHR(13) + ;
+           "Створено 4 таблиці:" + CHR(13) + ;
+           "- Stations (8 записів)" + CHR(13) + ;
+           "- CarTypes (5 записів)" + CHR(13) + ;
+           "- Passengers (7 записів)" + CHR(13) + ;
+           "- Routes (5 записів)", 64, "Lab 7 - Готово")
