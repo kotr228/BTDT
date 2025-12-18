@@ -1,6 +1,6 @@
 *----------------------------------------------------------
-* Лабораторна робота №10 - Частина 2
-* Створення форм пошуку та запитів
+* Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР° СЂРѕР±РѕС‚Р° в„–10 - Р§Р°СЃС‚РёРЅР° 2
+* РЎС‚РІРѕСЂРµРЅРЅСЏ С„РѕСЂРј РїРѕС€СѓРєСѓ С‚Р° Р·Р°РїРёС‚С–РІ
 *----------------------------------------------------------
 CLOSE DATABASES ALL
 CLEAR ALL
@@ -9,10 +9,10 @@ SET TALK OFF
 
 SET DEFAULT TO "C:\VFP_Lab10"
 
-MESSAGEBOX("Створюємо форми пошуку та запитів...", 48, "Lab 10 - Частина 2")
+MESSAGEBOX("РЎС‚РІРѕСЂСЋС”РјРѕ С„РѕСЂРјРё РїРѕС€СѓРєСѓ С‚Р° Р·Р°РїРёС‚С–РІ...", 48, "Lab 10 - Р§Р°СЃС‚РёРЅР° 2")
 
 *==========================================================
-* 3. ФОРМА ПОСЛІДОВНОГО ПОШУКУ (frm_search_seq.scx)
+* 3. Р¤РћР РњРђ РџРћРЎР›Р†Р”РћР’РќРћР“Рћ РџРћРЁРЈРљРЈ (frm_search_seq.scx)
 *==========================================================
 DELETE FILE frm_search_seq.scx
 DELETE FILE frm_search_seq.sct
@@ -23,13 +23,13 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Послідовний пошук (LOCATE)"
+    .Caption = "РџРѕСЃР»С–РґРѕРІРЅРёР№ РїРѕС€СѓРє (LOCATE)"
     .Width = 650
     .Height = 500
     .AutoCenter = .T.
     .DataSession = 2
 
-    * Відкриваємо БД
+    * Р’С–РґРєСЂРёРІР°С”РјРѕ Р‘Р”
     LOCAL lcLoad
     lcLoad = [SET EXCLUSIVE OFF] + CHR(13) + ;
              [SET DEFAULT TO "C:\VFP_Lab9"] + CHR(13) + ;
@@ -38,9 +38,9 @@ WITH loForm
              [SELECT Passengers]
     .WriteMethod("Load", lcLoad)
 
-    * Заголовок
+    * Р—Р°РіРѕР»РѕРІРѕРє
     .AddObject("lblTitle", "Label")
-    .lblTitle.Caption = "Послідовний пошук пасажирів"
+    .lblTitle.Caption = "РџРѕСЃР»С–РґРѕРІРЅРёР№ РїРѕС€СѓРє РїР°СЃР°Р¶РёСЂС–РІ"
     .lblTitle.FontBold = .T.
     .lblTitle.FontSize = 11
     .lblTitle.Top = 10
@@ -48,9 +48,9 @@ WITH loForm
     .lblTitle.Width = 300
     .lblTitle.Visible = .T.
 
-    * Пошук за прізвищем
+    * РџРѕС€СѓРє Р·Р° РїСЂС–Р·РІРёС‰РµРј
     .AddObject("lblLName", "Label")
-    .lblLName.Caption = "Прізвище:"
+    .lblLName.Caption = "РџСЂС–Р·РІРёС‰Рµ:"
     .lblLName.Top = 50
     .lblLName.Left = 20
     .lblLName.Width = 80
@@ -63,7 +63,7 @@ WITH loForm
     .txtLName.Visible = .T.
 
     .AddObject("cmdSearchLName", "CommandButton")
-    .cmdSearchLName.Caption = "Шукати"
+    .cmdSearchLName.Caption = "РЁСѓРєР°С‚Рё"
     .cmdSearchLName.Top = 46
     .cmdSearchLName.Left = 320
     .cmdSearchLName.Width = 100
@@ -74,14 +74,14 @@ WITH loForm
         [LOCATE FOR UPPER(ALLTRIM(lname)) = UPPER(ALLTRIM(THISFORM.txtLName.Value))] + CHR(13) + ;
         [IF FOUND()] + CHR(13) + ;
         [   THISFORM.grdResult.Refresh()] + CHR(13) + ;
-        [   MESSAGEBOX("Знайдено: " + ALLTRIM(fname) + " " + ALLTRIM(lname), 64, "Успіх")] + CHR(13) + ;
+        [   MESSAGEBOX("Р—РЅР°Р№РґРµРЅРѕ: " + ALLTRIM(fname) + " " + ALLTRIM(lname), 64, "РЈСЃРїС–С…")] + CHR(13) + ;
         [ELSE] + CHR(13) + ;
-        [   MESSAGEBOX("Пасажира з таким прізвищем не знайдено", 48, "Не знайдено")] + CHR(13) + ;
+        [   MESSAGEBOX("РџР°СЃР°Р¶РёСЂР° Р· С‚Р°РєРёРј РїСЂС–Р·РІРёС‰РµРј РЅРµ Р·РЅР°Р№РґРµРЅРѕ", 48, "РќРµ Р·РЅР°Р№РґРµРЅРѕ")] + CHR(13) + ;
         [ENDIF])
 
-    * Пошук за ім'ям
+    * РџРѕС€СѓРє Р·Р° С–Рј'СЏРј
     .AddObject("lblFName", "Label")
-    .lblFName.Caption = "Ім'я:"
+    .lblFName.Caption = "Р†Рј'СЏ:"
     .lblFName.Top = 90
     .lblFName.Left = 20
     .lblFName.Width = 80
@@ -94,7 +94,7 @@ WITH loForm
     .txtFName.Visible = .T.
 
     .AddObject("cmdSearchFName", "CommandButton")
-    .cmdSearchFName.Caption = "Шукати"
+    .cmdSearchFName.Caption = "РЁСѓРєР°С‚Рё"
     .cmdSearchFName.Top = 86
     .cmdSearchFName.Left = 320
     .cmdSearchFName.Width = 100
@@ -105,14 +105,14 @@ WITH loForm
         [LOCATE FOR UPPER(ALLTRIM(fname)) = UPPER(ALLTRIM(THISFORM.txtFName.Value))] + CHR(13) + ;
         [IF FOUND()] + CHR(13) + ;
         [   THISFORM.grdResult.Refresh()] + CHR(13) + ;
-        [   MESSAGEBOX("Знайдено: " + ALLTRIM(fname) + " " + ALLTRIM(lname), 64, "Успіх")] + CHR(13) + ;
+        [   MESSAGEBOX("Р—РЅР°Р№РґРµРЅРѕ: " + ALLTRIM(fname) + " " + ALLTRIM(lname), 64, "РЈСЃРїС–С…")] + CHR(13) + ;
         [ELSE] + CHR(13) + ;
-        [   MESSAGEBOX("Пасажира з таким ім'ям не знайдено", 48, "Не знайдено")] + CHR(13) + ;
+        [   MESSAGEBOX("РџР°СЃР°Р¶РёСЂР° Р· С‚Р°РєРёРј С–Рј'СЏРј РЅРµ Р·РЅР°Р№РґРµРЅРѕ", 48, "РќРµ Р·РЅР°Р№РґРµРЅРѕ")] + CHR(13) + ;
         [ENDIF])
 
-    * Продовжити пошук
+    * РџСЂРѕРґРѕРІР¶РёС‚Рё РїРѕС€СѓРє
     .AddObject("cmdContinue", "CommandButton")
-    .cmdContinue.Caption = "Продовжити пошук (CONTINUE)"
+    .cmdContinue.Caption = "РџСЂРѕРґРѕРІР¶РёС‚Рё РїРѕС€СѓРє (CONTINUE)"
     .cmdContinue.Top = 130
     .cmdContinue.Left = 20
     .cmdContinue.Width = 200
@@ -121,14 +121,14 @@ WITH loForm
         [CONTINUE] + CHR(13) + ;
         [IF FOUND()] + CHR(13) + ;
         [   THISFORM.grdResult.Refresh()] + CHR(13) + ;
-        [   MESSAGEBOX("Знайдено наступний запис", 64)] + CHR(13) + ;
+        [   MESSAGEBOX("Р—РЅР°Р№РґРµРЅРѕ РЅР°СЃС‚СѓРїРЅРёР№ Р·Р°РїРёСЃ", 64)] + CHR(13) + ;
         [ELSE] + CHR(13) + ;
-        [   MESSAGEBOX("Більше записів не знайдено", 48)] + CHR(13) + ;
+        [   MESSAGEBOX("Р‘С–Р»СЊС€Рµ Р·Р°РїРёСЃС–РІ РЅРµ Р·РЅР°Р№РґРµРЅРѕ", 48)] + CHR(13) + ;
         [ENDIF])
 
-    * Показати всі
+    * РџРѕРєР°Р·Р°С‚Рё РІСЃС–
     .AddObject("cmdShowAll", "CommandButton")
-    .cmdShowAll.Caption = "Показати всі"
+    .cmdShowAll.Caption = "РџРѕРєР°Р·Р°С‚Рё РІСЃС–"
     .cmdShowAll.Top = 130
     .cmdShowAll.Left = 230
     .cmdShowAll.Width = 120
@@ -138,7 +138,7 @@ WITH loForm
         [GO TOP] + CHR(13) + ;
         [THISFORM.grdResult.Refresh()])
 
-    * Grid для результатів
+    * Grid РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
     .AddObject("grdResult", "Grid")
     .grdResult.RecordSourceType = 1
     .grdResult.RecordSource = "Passengers"
@@ -149,9 +149,9 @@ WITH loForm
     .grdResult.ReadOnly = .T.
     .grdResult.Visible = .T.
 
-    * Закрити
+    * Р—Р°РєСЂРёС‚Рё
     .AddObject("cmdClose", "CommandButton")
-    .cmdClose.Caption = "Закрити"
+    .cmdClose.Caption = "Р—Р°РєСЂРёС‚Рё"
     .cmdClose.Top = 450
     .cmdClose.Left = 275
     .cmdClose.Width = 100
@@ -164,7 +164,7 @@ DOEVENTS
 =INKEY(1)
 
 *==========================================================
-* 4. ФОРМА ІНДЕКСНОГО ПОШУКУ (frm_search_idx.scx)
+* 4. Р¤РћР РњРђ Р†РќР”Р•РљРЎРќРћР“Рћ РџРћРЁРЈРљРЈ (frm_search_idx.scx)
 *==========================================================
 DELETE FILE frm_search_idx.scx
 DELETE FILE frm_search_idx.sct
@@ -175,13 +175,13 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Індексний пошук (SEEK)"
+    .Caption = "Р†РЅРґРµРєСЃРЅРёР№ РїРѕС€СѓРє (SEEK)"
     .Width = 600
     .Height = 450
     .AutoCenter = .T.
     .DataSession = 2
 
-    * Відкриваємо БД з індексом
+    * Р’С–РґРєСЂРёРІР°С”РјРѕ Р‘Р” Р· С–РЅРґРµРєСЃРѕРј
     LOCAL lcLoad
     lcLoad = [SET EXCLUSIVE OFF] + CHR(13) + ;
              [SET DEFAULT TO "C:\VFP_Lab9"] + CHR(13) + ;
@@ -190,9 +190,9 @@ WITH loForm
              [SELECT Passengers]
     .WriteMethod("Load", lcLoad)
 
-    * Заголовок
+    * Р—Р°РіРѕР»РѕРІРѕРє
     .AddObject("lblTitle", "Label")
-    .lblTitle.Caption = "Індексний пошук за ID пасажира"
+    .lblTitle.Caption = "Р†РЅРґРµРєСЃРЅРёР№ РїРѕС€СѓРє Р·Р° ID РїР°СЃР°Р¶РёСЂР°"
     .lblTitle.FontBold = .T.
     .lblTitle.FontSize = 11
     .lblTitle.Top = 10
@@ -201,15 +201,15 @@ WITH loForm
     .lblTitle.Visible = .T.
 
     .AddObject("lblInfo", "Label")
-    .lblInfo.Caption = "Пошук використовує індекс для швидкого доступу (SEEK)"
+    .lblInfo.Caption = "РџРѕС€СѓРє РІРёРєРѕСЂРёСЃС‚РѕРІСѓС” С–РЅРґРµРєСЃ РґР»СЏ С€РІРёРґРєРѕРіРѕ РґРѕСЃС‚СѓРїСѓ (SEEK)"
     .lblInfo.Top = 35
     .lblInfo.Left = 20
     .lblInfo.Width = 400
     .lblInfo.Visible = .T.
 
-    * Пошук за ID
+    * РџРѕС€СѓРє Р·Р° ID
     .AddObject("lblID", "Label")
-    .lblID.Caption = "ID пасажира:"
+    .lblID.Caption = "ID РїР°СЃР°Р¶РёСЂР°:"
     .lblID.Top = 70
     .lblID.Left = 20
     .lblID.Width = 100
@@ -223,7 +223,7 @@ WITH loForm
     .txtID.Visible = .T.
 
     .AddObject("cmdSeek", "CommandButton")
-    .cmdSeek.Caption = "SEEK (швидкий пошук)"
+    .cmdSeek.Caption = "SEEK (С€РІРёРґРєРёР№ РїРѕС€СѓРє)"
     .cmdSeek.Top = 66
     .cmdSeek.Left = 290
     .cmdSeek.Width = 180
@@ -234,24 +234,24 @@ WITH loForm
         [IF FOUND()] + CHR(13) + ;
         [   THISFORM.grdResult.Refresh()] + CHR(13) + ;
         [   LOCAL lcMsg] + CHR(13) + ;
-        [   lcMsg = "Знайдено:" + CHR(13) + ;
+        [   lcMsg = "Р—РЅР°Р№РґРµРЅРѕ:" + CHR(13) + ;
         [            "ID: " + TRANSFORM(pass_id) + CHR(13) + ;
-        [            "ПІБ: " + ALLTRIM(lname) + " " + ALLTRIM(fname) + " " + ALLTRIM(pname)] + CHR(13) + ;
-        [   MESSAGEBOX(lcMsg, 64, "Успіх")] + CHR(13) + ;
+        [            "РџР†Р‘: " + ALLTRIM(lname) + " " + ALLTRIM(fname) + " " + ALLTRIM(pname)] + CHR(13) + ;
+        [   MESSAGEBOX(lcMsg, 64, "РЈСЃРїС–С…")] + CHR(13) + ;
         [ELSE] + CHR(13) + ;
-        [   MESSAGEBOX("Пасажира з ID=" + THISFORM.txtID.Value + " не знайдено", 48, "Не знайдено")] + CHR(13) + ;
+        [   MESSAGEBOX("РџР°СЃР°Р¶РёСЂР° Р· ID=" + THISFORM.txtID.Value + " РЅРµ Р·РЅР°Р№РґРµРЅРѕ", 48, "РќРµ Р·РЅР°Р№РґРµРЅРѕ")] + CHR(13) + ;
         [ENDIF])
 
-    * Інформаційна панель
+    * Р†РЅС„РѕСЂРјР°С†С–Р№РЅР° РїР°РЅРµР»СЊ
     .AddObject("lblSeekInfo", "Label")
-    .lblSeekInfo.Caption = "SEEK швидше ніж LOCATE, бо використовує індекс"
+    .lblSeekInfo.Caption = "SEEK С€РІРёРґС€Рµ РЅС–Р¶ LOCATE, Р±Рѕ РІРёРєРѕСЂРёСЃС‚РѕРІСѓС” С–РЅРґРµРєСЃ"
     .lblSeekInfo.Top = 110
     .lblSeekInfo.Left = 20
     .lblSeekInfo.Width = 400
     .lblSeekInfo.ForeColor = RGB(0, 100, 0)
     .lblSeekInfo.Visible = .T.
 
-    * Grid для результатів
+    * Grid РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
     .AddObject("grdResult", "Grid")
     .grdResult.RecordSourceType = 1
     .grdResult.RecordSource = "Passengers"
@@ -262,9 +262,9 @@ WITH loForm
     .grdResult.ReadOnly = .T.
     .grdResult.Visible = .T.
 
-    * Закрити
+    * Р—Р°РєСЂРёС‚Рё
     .AddObject("cmdClose", "CommandButton")
-    .cmdClose.Caption = "Закрити"
+    .cmdClose.Caption = "Р—Р°РєСЂРёС‚Рё"
     .cmdClose.Top = 400
     .cmdClose.Left = 250
     .cmdClose.Width = 100
@@ -276,8 +276,8 @@ KEYBOARD '{CTRL+W}' PLAIN
 DOEVENTS
 =INKEY(1)
 
-MESSAGEBOX("Частина 2 завершена. Створено форми пошуку:" + CHR(13) + ;
-           "- frm_search_seq.scx (послідовний)" + CHR(13) + ;
-           "- frm_search_idx.scx (індексний)", 64, "Прогрес")
+MESSAGEBOX("Р§Р°СЃС‚РёРЅР° 2 Р·Р°РІРµСЂС€РµРЅР°. РЎС‚РІРѕСЂРµРЅРѕ С„РѕСЂРјРё РїРѕС€СѓРєСѓ:" + CHR(13) + ;
+           "- frm_search_seq.scx (РїРѕСЃР»С–РґРѕРІРЅРёР№)" + CHR(13) + ;
+           "- frm_search_idx.scx (С–РЅРґРµРєСЃРЅРёР№)", 64, "РџСЂРѕРіСЂРµСЃ")
 
-* Продовження у частині 3...
+* РџСЂРѕРґРѕРІР¶РµРЅРЅСЏ Сѓ С‡Р°СЃС‚РёРЅС– 3...

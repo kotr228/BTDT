@@ -1,6 +1,6 @@
 *----------------------------------------------------------
-* Лабораторна робота №10 - Частина 3
-* Створення форм запитів та переглядів
+* Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР° СЂРѕР±РѕС‚Р° в„–10 - Р§Р°СЃС‚РёРЅР° 3
+* РЎС‚РІРѕСЂРµРЅРЅСЏ С„РѕСЂРј Р·Р°РїРёС‚С–РІ С‚Р° РїРµСЂРµРіР»СЏРґС–РІ
 *----------------------------------------------------------
 CLOSE DATABASES ALL
 CLEAR ALL
@@ -9,10 +9,10 @@ SET TALK OFF
 
 SET DEFAULT TO "C:\VFP_Lab10"
 
-MESSAGEBOX("Створюємо форми запитів та переглядів...", 48, "Lab 10 - Частина 3")
+MESSAGEBOX("РЎС‚РІРѕСЂСЋС”РјРѕ С„РѕСЂРјРё Р·Р°РїРёС‚С–РІ С‚Р° РїРµСЂРµРіР»СЏРґС–РІ...", 48, "Lab 10 - Р§Р°СЃС‚РёРЅР° 3")
 
 *==========================================================
-* 5. ФОРМА ЗАПИТІВ (frm_queries.scx)
+* 5. Р¤РћР РњРђ Р—РђРџРРўР†Р’ (frm_queries.scx)
 *==========================================================
 DELETE FILE frm_queries.scx
 DELETE FILE frm_queries.sct
@@ -23,22 +23,22 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Запити до БД"
+    .Caption = "Р—Р°РїРёС‚Рё РґРѕ Р‘Р”"
     .Width = 750
     .Height = 600
     .AutoCenter = .T.
     .DataSession = 2
 
-    * Відкриваємо БД
+    * Р’С–РґРєСЂРёРІР°С”РјРѕ Р‘Р”
     LOCAL lcLoad
     lcLoad = [SET EXCLUSIVE OFF] + CHR(13) + ;
              [SET DEFAULT TO "C:\VFP_Lab9"] + CHR(13) + ;
              [OPEN DATABASE "TktDB_Norm" SHARED]
     .WriteMethod("Load", lcLoad)
 
-    * Заголовок
+    * Р—Р°РіРѕР»РѕРІРѕРє
     .AddObject("lblTitle", "Label")
-    .lblTitle.Caption = "SQL-запити з критеріями"
+    .lblTitle.Caption = "SQL-Р·Р°РїРёС‚Рё Р· РєСЂРёС‚РµСЂС–СЏРјРё"
     .lblTitle.FontBold = .T.
     .lblTitle.FontSize = 12
     .lblTitle.Top = 10
@@ -46,7 +46,7 @@ WITH loForm
     .lblTitle.Width = 300
     .lblTitle.Visible = .T.
 
-    * PageFrame для запитів
+    * PageFrame РґР»СЏ Р·Р°РїРёС‚С–РІ
     .AddObject("pgfQueries", "PageFrame")
     .pgfQueries.PageCount = 2
     .pgfQueries.Width = 720
@@ -55,21 +55,21 @@ WITH loForm
     .pgfQueries.Left = 15
     .pgfQueries.Visible = .T.
 
-    * --- Запит 1: Вартість квитків в діапазоні ---
+    * --- Р—Р°РїРёС‚ 1: Р’Р°СЂС‚С–СЃС‚СЊ РєРІРёС‚РєС–РІ РІ РґС–Р°РїР°Р·РѕРЅС– ---
     WITH .pgfQueries.Page1
-        .Caption = "Запит 1: Квитки за вартістю"
+        .Caption = "Р—Р°РїРёС‚ 1: РљРІРёС‚РєРё Р·Р° РІР°СЂС‚С–СЃС‚СЋ"
 
         .AddObject("lblDesc", "Label")
-        .lblDesc.Caption = "Знайти квитки з вартістю в діапазоні:"
+        .lblDesc.Caption = "Р—РЅР°Р№С‚Рё РєРІРёС‚РєРё Р· РІР°СЂС‚С–СЃС‚СЋ РІ РґС–Р°РїР°Р·РѕРЅС–:"
         .lblDesc.FontBold = .T.
         .lblDesc.Top = 15
         .lblDesc.Left = 20
         .lblDesc.Width = 300
         .lblDesc.Visible = .T.
 
-        * Мінімальна вартість
+        * РњС–РЅС–РјР°Р»СЊРЅР° РІР°СЂС‚С–СЃС‚СЊ
         .AddObject("lblMin", "Label")
-        .lblMin.Caption = "Від:"
+        .lblMin.Caption = "Р’С–Рґ:"
         .lblMin.Top = 50
         .lblMin.Left = 20
         .lblMin.Width = 50
@@ -82,9 +82,9 @@ WITH loForm
         .txtMin.Value = "100"
         .txtMin.Visible = .T.
 
-        * Максимальна вартість
+        * РњР°РєСЃРёРјР°Р»СЊРЅР° РІР°СЂС‚С–СЃС‚СЊ
         .AddObject("lblMax", "Label")
-        .lblMax.Caption = "До:"
+        .lblMax.Caption = "Р”Рѕ:"
         .lblMax.Top = 50
         .lblMax.Left = 200
         .lblMax.Width = 50
@@ -97,9 +97,9 @@ WITH loForm
         .txtMax.Value = "500"
         .txtMax.Visible = .T.
 
-        * Кнопка виконання запиту
+        * РљРЅРѕРїРєР° РІРёРєРѕРЅР°РЅРЅСЏ Р·Р°РїРёС‚Сѓ
         .AddObject("cmdExecute", "CommandButton")
-        .cmdExecute.Caption = "Виконати запит"
+        .cmdExecute.Caption = "Р’РёРєРѕРЅР°С‚Рё Р·Р°РїРёС‚"
         .cmdExecute.Top = 46
         .cmdExecute.Left = 380
         .cmdExecute.Width = 140
@@ -117,18 +117,18 @@ WITH loForm
             [  INTO CURSOR curQuery1] + CHR(13) + ;
             [THISFORM.pgfQueries.Page1.grdResult.RecordSource = ""] + CHR(13) + ;
             [THISFORM.pgfQueries.Page1.grdResult.RecordSource = "curQuery1"] + CHR(13) + ;
-            [MESSAGEBOX("Знайдено записів: " + TRANSFORM(RECCOUNT("curQuery1")), 64, "Результат")])
+            [MESSAGEBOX("Р—РЅР°Р№РґРµРЅРѕ Р·Р°РїРёСЃС–РІ: " + TRANSFORM(RECCOUNT("curQuery1")), 64, "Р РµР·СѓР»СЊС‚Р°С‚")])
 
-        * Інфо про запит
+        * Р†РЅС„Рѕ РїСЂРѕ Р·Р°РїРёС‚
         .AddObject("lblSQL", "Label")
-        .lblSQL.Caption = "SQL: SELECT з BETWEEN та INNER JOIN"
+        .lblSQL.Caption = "SQL: SELECT Р· BETWEEN С‚Р° INNER JOIN"
         .lblSQL.Top = 85
         .lblSQL.Left = 20
         .lblSQL.Width = 400
         .lblSQL.ForeColor = RGB(0, 0, 150)
         .lblSQL.Visible = .T.
 
-        * Grid для результатів
+        * Grid РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
         .AddObject("grdResult", "Grid")
         .grdResult.Top = 115
         .grdResult.Left = 20
@@ -138,21 +138,21 @@ WITH loForm
         .grdResult.Visible = .T.
     ENDWITH
 
-    * --- Запит 2: Маршрути за відстанню та станціями ---
+    * --- Р—Р°РїРёС‚ 2: РњР°СЂС€СЂСѓС‚Рё Р·Р° РІС–РґСЃС‚Р°РЅРЅСЋ С‚Р° СЃС‚Р°РЅС†С–СЏРјРё ---
     WITH .pgfQueries.Page2
-        .Caption = "Запит 2: Маршрути"
+        .Caption = "Р—Р°РїРёС‚ 2: РњР°СЂС€СЂСѓС‚Рё"
 
         .AddObject("lblDesc", "Label")
-        .lblDesc.Caption = "Знайти маршрути за критеріями:"
+        .lblDesc.Caption = "Р—РЅР°Р№С‚Рё РјР°СЂС€СЂСѓС‚Рё Р·Р° РєСЂРёС‚РµСЂС–СЏРјРё:"
         .lblDesc.FontBold = .T.
         .lblDesc.Top = 15
         .lblDesc.Left = 20
         .lblDesc.Width = 300
         .lblDesc.Visible = .T.
 
-        * Мінімальна відстань
+        * РњС–РЅС–РјР°Р»СЊРЅР° РІС–РґСЃС‚Р°РЅСЊ
         .AddObject("lblDist", "Label")
-        .lblDist.Caption = "Відстань більше (км):"
+        .lblDist.Caption = "Р’С–РґСЃС‚Р°РЅСЊ Р±С–Р»СЊС€Рµ (РєРј):"
         .lblDist.Top = 50
         .lblDist.Left = 20
         .lblDist.Width = 150
@@ -165,9 +165,9 @@ WITH loForm
         .txtDistance.Value = "0"
         .txtDistance.Visible = .T.
 
-        * Фільтр за станцією
+        * Р¤С–Р»СЊС‚СЂ Р·Р° СЃС‚Р°РЅС†С–С”СЋ
         .AddObject("lblStation", "Label")
-        .lblStation.Caption = "Станція (частина назви):"
+        .lblStation.Caption = "РЎС‚Р°РЅС†С–СЏ (С‡Р°СЃС‚РёРЅР° РЅР°Р·РІРё):"
         .lblStation.Top = 85
         .lblStation.Left = 20
         .lblStation.Width = 150
@@ -180,9 +180,9 @@ WITH loForm
         .txtStation.Value = ""
         .txtStation.Visible = .T.
 
-        * Кнопка виконання
+        * РљРЅРѕРїРєР° РІРёРєРѕРЅР°РЅРЅСЏ
         .AddObject("cmdExecute", "CommandButton")
-        .cmdExecute.Caption = "Виконати запит"
+        .cmdExecute.Caption = "Р’РёРєРѕРЅР°С‚Рё Р·Р°РїРёС‚"
         .cmdExecute.Top = 46
         .cmdExecute.Left = 400
         .cmdExecute.Width = 140
@@ -210,10 +210,10 @@ WITH loForm
             [ENDIF] + CHR(13) + ;
             [THISFORM.pgfQueries.Page2.grdResult.RecordSource = ""] + CHR(13) + ;
             [THISFORM.pgfQueries.Page2.grdResult.RecordSource = "curQuery2"] + CHR(13) + ;
-            [MESSAGEBOX("Знайдено маршрутів: " + TRANSFORM(RECCOUNT("curQuery2")), 64)])
+            [MESSAGEBOX("Р—РЅР°Р№РґРµРЅРѕ РјР°СЂС€СЂСѓС‚С–РІ: " + TRANSFORM(RECCOUNT("curQuery2")), 64)])
 
         .AddObject("lblSQL", "Label")
-        .lblSQL.Caption = "SQL: SELECT з INNER JOIN та підзапитом"
+        .lblSQL.Caption = "SQL: SELECT Р· INNER JOIN С‚Р° РїС–РґР·Р°РїРёС‚РѕРј"
         .lblSQL.Top = 120
         .lblSQL.Left = 20
         .lblSQL.Width = 400
@@ -229,9 +229,9 @@ WITH loForm
         .grdResult.Visible = .T.
     ENDWITH
 
-    * Закрити
+    * Р—Р°РєСЂРёС‚Рё
     .AddObject("cmdClose", "CommandButton")
-    .cmdClose.Caption = "Закрити"
+    .cmdClose.Caption = "Р—Р°РєСЂРёС‚Рё"
     .cmdClose.Top = 570
     .cmdClose.Left = 325
     .cmdClose.Width = 100
@@ -244,7 +244,7 @@ DOEVENTS
 =INKEY(1)
 
 *==========================================================
-* 6. ФОРМА ПЕРЕГЛЯДІВ (frm_views.scx)
+* 6. Р¤РћР РњРђ РџР•Р Р•Р“Р›РЇР”Р†Р’ (frm_views.scx)
 *==========================================================
 DELETE FILE frm_views.scx
 DELETE FILE frm_views.sct
@@ -255,29 +255,29 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Перегляди БД"
+    .Caption = "РџРµСЂРµРіР»СЏРґРё Р‘Р”"
     .Width = 750
     .Height = 550
     .AutoCenter = .T.
     .DataSession = 2
 
-    * Відкриваємо БД
+    * Р’С–РґРєСЂРёРІР°С”РјРѕ Р‘Р”
     LOCAL lcLoad
     lcLoad = [SET EXCLUSIVE OFF] + CHR(13) + ;
              [SET DEFAULT TO "C:\VFP_Lab9"] + CHR(13) + ;
              [OPEN DATABASE "TktDB_Norm" SHARED]
     .WriteMethod("Load", lcLoad)
 
-    * Заголовок
+    * Р—Р°РіРѕР»РѕРІРѕРє
     .AddObject("lblTitle", "Label")
-    .lblTitle.Caption = "Логічні перегляди даних"
+    .lblTitle.Caption = "Р›РѕРіС–С‡РЅС– РїРµСЂРµРіР»СЏРґРё РґР°РЅРёС…"
     .lblTitle.FontBold = .T.
     .lblTitle.FontSize = 12
     .lblTitle.Top = 10
     .lblTitle.Left = 20
     .lblTitle.Visible = .T.
 
-    * PageFrame для переглядів
+    * PageFrame РґР»СЏ РїРµСЂРµРіР»СЏРґС–РІ
     .AddObject("pgfViews", "PageFrame")
     .pgfViews.PageCount = 2
     .pgfViews.Width = 720
@@ -286,12 +286,12 @@ WITH loForm
     .pgfViews.Left = 15
     .pgfViews.Visible = .T.
 
-    * --- Перегляд 1: Повна інформація про квитки ---
+    * --- РџРµСЂРµРіР»СЏРґ 1: РџРѕРІРЅР° С–РЅС„РѕСЂРјР°С†С–СЏ РїСЂРѕ РєРІРёС‚РєРё ---
     WITH .pgfViews.Page1
-        .Caption = "Перегляд 1: Інформація про квитки"
+        .Caption = "РџРµСЂРµРіР»СЏРґ 1: Р†РЅС„РѕСЂРјР°С†С–СЏ РїСЂРѕ РєРІРёС‚РєРё"
 
         .AddObject("lblDesc", "Label")
-        .lblDesc.Caption = "Повна інформація про бронювання та квитки"
+        .lblDesc.Caption = "РџРѕРІРЅР° С–РЅС„РѕСЂРјР°С†С–СЏ РїСЂРѕ Р±СЂРѕРЅСЋРІР°РЅРЅСЏ С‚Р° РєРІРёС‚РєРё"
         .lblDesc.FontBold = .T.
         .lblDesc.Top = 15
         .lblDesc.Left = 20
@@ -299,7 +299,7 @@ WITH loForm
         .lblDesc.Visible = .T.
 
         .AddObject("cmdLoad", "CommandButton")
-        .cmdLoad.Caption = "Завантажити перегляд"
+        .cmdLoad.Caption = "Р—Р°РІР°РЅС‚Р°Р¶РёС‚Рё РїРµСЂРµРіР»СЏРґ"
         .cmdLoad.Top = 12
         .cmdLoad.Left = 450
         .cmdLoad.Width = 180
@@ -320,10 +320,10 @@ WITH loForm
             [  INTO CURSOR curView1] + CHR(13) + ;
             [THISFORM.pgfViews.Page1.grdResult.RecordSource = ""] + CHR(13) + ;
             [THISFORM.pgfViews.Page1.grdResult.RecordSource = "curView1"] + CHR(13) + ;
-            [MESSAGEBOX("Завантажено записів: " + TRANSFORM(RECCOUNT("curView1")), 64)])
+            [MESSAGEBOX("Р—Р°РІР°РЅС‚Р°Р¶РµРЅРѕ Р·Р°РїРёСЃС–РІ: " + TRANSFORM(RECCOUNT("curView1")), 64)])
 
         .AddObject("lblInfo", "Label")
-        .lblInfo.Caption = "Об'єднання 5 таблиць: Reserv, Passengers, Seats, Cars, CarTypes"
+        .lblInfo.Caption = "РћР±'С”РґРЅР°РЅРЅСЏ 5 С‚Р°Р±Р»РёС†СЊ: Reserv, Passengers, Seats, Cars, CarTypes"
         .lblInfo.Top = 50
         .lblInfo.Left = 20
         .lblInfo.Width = 500
@@ -339,12 +339,12 @@ WITH loForm
         .grdResult.Visible = .T.
     ENDWITH
 
-    * --- Перегляд 2: Розклад з інформацією про маршрути ---
+    * --- РџРµСЂРµРіР»СЏРґ 2: Р РѕР·РєР»Р°Рґ Р· С–РЅС„РѕСЂРјР°С†С–С”СЋ РїСЂРѕ РјР°СЂС€СЂСѓС‚Рё ---
     WITH .pgfViews.Page2
-        .Caption = "Перегляд 2: Розклад руху"
+        .Caption = "РџРµСЂРµРіР»СЏРґ 2: Р РѕР·РєР»Р°Рґ СЂСѓС…Сѓ"
 
         .AddObject("lblDesc", "Label")
-        .lblDesc.Caption = "Повний розклад руху потягів"
+        .lblDesc.Caption = "РџРѕРІРЅРёР№ СЂРѕР·РєР»Р°Рґ СЂСѓС…Сѓ РїРѕС‚СЏРіС–РІ"
         .lblDesc.FontBold = .T.
         .lblDesc.Top = 15
         .lblDesc.Left = 20
@@ -352,7 +352,7 @@ WITH loForm
         .lblDesc.Visible = .T.
 
         .AddObject("cmdLoad", "CommandButton")
-        .cmdLoad.Caption = "Завантажити перегляд"
+        .cmdLoad.Caption = "Р—Р°РІР°РЅС‚Р°Р¶РёС‚Рё РїРµСЂРµРіР»СЏРґ"
         .cmdLoad.Top = 12
         .cmdLoad.Left = 450
         .cmdLoad.Width = 180
@@ -373,10 +373,10 @@ WITH loForm
             [  INTO CURSOR curView2] + CHR(13) + ;
             [THISFORM.pgfViews.Page2.grdResult.RecordSource = ""] + CHR(13) + ;
             [THISFORM.pgfViews.Page2.grdResult.RecordSource = "curView2"] + CHR(13) + ;
-            [MESSAGEBOX("Завантажено розкладів: " + TRANSFORM(RECCOUNT("curView2")), 64)])
+            [MESSAGEBOX("Р—Р°РІР°РЅС‚Р°Р¶РµРЅРѕ СЂРѕР·РєР»Р°РґС–РІ: " + TRANSFORM(RECCOUNT("curView2")), 64)])
 
         .AddObject("lblInfo", "Label")
-        .lblInfo.Caption = "Об'єднання 4 таблиць з розрахунком часу в дорозі"
+        .lblInfo.Caption = "РћР±'С”РґРЅР°РЅРЅСЏ 4 С‚Р°Р±Р»РёС†СЊ Р· СЂРѕР·СЂР°С…СѓРЅРєРѕРј С‡Р°СЃСѓ РІ РґРѕСЂРѕР·С–"
         .lblInfo.Top = 50
         .lblInfo.Left = 20
         .lblInfo.Width = 400
@@ -392,9 +392,9 @@ WITH loForm
         .grdResult.Visible = .T.
     ENDWITH
 
-    * Закрити
+    * Р—Р°РєСЂРёС‚Рё
     .AddObject("cmdClose", "CommandButton")
-    .cmdClose.Caption = "Закрити"
+    .cmdClose.Caption = "Р—Р°РєСЂРёС‚Рё"
     .cmdClose.Top = 520
     .cmdClose.Left = 325
     .cmdClose.Width = 100
@@ -406,12 +406,12 @@ KEYBOARD '{CTRL+W}' PLAIN
 DOEVENTS
 =INKEY(1)
 
-MESSAGEBOX("ГОТОВО! Всі форми створено успішно!" + CHR(13) + CHR(13) + ;
-           "Створено 6 форм:" + CHR(13) + ;
-           "1. frm_main.scx - головна з меню" + CHR(13) + ;
-           "2. frm_database.scx - ведення БД" + CHR(13) + ;
-           "3. frm_search_seq.scx - послідовний пошук" + CHR(13) + ;
-           "4. frm_search_idx.scx - індексний пошук" + CHR(13) + ;
-           "5. frm_queries.scx - SQL-запити" + CHR(13) + ;
-           "6. frm_views.scx - перегляди" + CHR(13) + CHR(13) + ;
-           "Запустіть: DO FORM frm_main", 64, "Lab 10 - Успіх!")
+MESSAGEBOX("Р“РћРўРћР’Рћ! Р’СЃС– С„РѕСЂРјРё СЃС‚РІРѕСЂРµРЅРѕ СѓСЃРїС–С€РЅРѕ!" + CHR(13) + CHR(13) + ;
+           "РЎС‚РІРѕСЂРµРЅРѕ 6 С„РѕСЂРј:" + CHR(13) + ;
+           "1. frm_main.scx - РіРѕР»РѕРІРЅР° Р· РјРµРЅСЋ" + CHR(13) + ;
+           "2. frm_database.scx - РІРµРґРµРЅРЅСЏ Р‘Р”" + CHR(13) + ;
+           "3. frm_search_seq.scx - РїРѕСЃР»С–РґРѕРІРЅРёР№ РїРѕС€СѓРє" + CHR(13) + ;
+           "4. frm_search_idx.scx - С–РЅРґРµРєСЃРЅРёР№ РїРѕС€СѓРє" + CHR(13) + ;
+           "5. frm_queries.scx - SQL-Р·Р°РїРёС‚Рё" + CHR(13) + ;
+           "6. frm_views.scx - РїРµСЂРµРіР»СЏРґРё" + CHR(13) + CHR(13) + ;
+           "Р—Р°РїСѓСЃС‚С–С‚СЊ: DO FORM frm_main", 64, "Lab 10 - РЈСЃРїС–С…!")
