@@ -1,6 +1,6 @@
 *----------------------------------------------------------
-* ВИПРАВЛЕНИЙ ГЕНЕРАТОР ФАЙЛІВ ФОРМ (.SCX)
-* Виправляє проблему пустих Grid (відкриває таблиці в Load)
+* Р’РРџР РђР’Р›Р•РќРР™ Р“Р•РќР•Р РђРўРћР  Р¤РђР™Р›Р†Р’ Р¤РћР Рњ (.SCX)
+* Р’РёРїСЂР°РІР»СЏС” РїСЂРѕР±Р»РµРјСѓ РїСѓСЃС‚РёС… Grid (РІС–РґРєСЂРёРІР°С” С‚Р°Р±Р»РёС†С– РІ Load)
 *----------------------------------------------------------
 CLOSE DATABASES ALL
 CLEAR ALL
@@ -15,11 +15,11 @@ IF !DIRECTORY(lcPath)
 ENDIF
 SET DEFAULT TO (lcPath)
 
-MESSAGEBOX("Починаємо виправлення форм." + CHR(13) + ;
-           "Будь ласка, НЕ ЧІПАЙТЕ мишку та клавіатуру!", 48, "Увага")
+MESSAGEBOX("РџРѕС‡РёРЅР°С”РјРѕ РІРёРїСЂР°РІР»РµРЅРЅСЏ С„РѕСЂРј." + CHR(13) + ;
+           "Р‘СѓРґСЊ Р»Р°СЃРєР°, РќР• Р§Р†РџРђР™РўР• РјРёС€РєСѓ С‚Р° РєР»Р°РІС–Р°С‚СѓСЂСѓ!", 48, "РЈРІР°РіР°")
 
 *==========================================================
-* 1. ГОЛОВНЕ МЕНЮ (frm_menu.scx) - тут все було добре
+* 1. Р“РћР›РћР’РќР• РњР•РќР® (frm_menu.scx) - С‚СѓС‚ РІСЃРµ Р±СѓР»Рѕ РґРѕР±СЂРµ
 *==========================================================
 DELETE FILE frm_menu.scx
 DELETE FILE frm_menu.sct
@@ -30,13 +30,13 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Головне Меню (Лаб 9)"
+    .Caption = "Р“РѕР»РѕРІРЅРµ РњРµРЅСЋ (Р›Р°Р± 9)"
     .AutoCenter = .T.
     .Width = 300
     .Height = 250
 
     .AddObject("cmdDB", "CommandButton")
-    .cmdDB.Caption = "База Даних"
+    .cmdDB.Caption = "Р‘Р°Р·Р° Р”Р°РЅРёС…"
     .cmdDB.Top = 30
     .cmdDB.Left = 50
     .cmdDB.Width = 200
@@ -45,7 +45,7 @@ WITH loForm
     .cmdDB.WriteMethod("Click", "DO FORM frm_data")
 
     .AddObject("cmdSearch", "CommandButton")
-    .cmdSearch.Caption = "Пошук"
+    .cmdSearch.Caption = "РџРѕС€СѓРє"
     .cmdSearch.Top = 90
     .cmdSearch.Left = 50
     .cmdSearch.Width = 200
@@ -54,7 +54,7 @@ WITH loForm
     .cmdSearch.WriteMethod("Click", "DO FORM frm_search")
 
     .AddObject("cmdQuery", "CommandButton")
-    .cmdQuery.Caption = "Запити та Перегляди"
+    .cmdQuery.Caption = "Р—Р°РїРёС‚Рё С‚Р° РџРµСЂРµРіР»СЏРґРё"
     .cmdQuery.Top = 150
     .cmdQuery.Left = 50
     .cmdQuery.Width = 200
@@ -68,7 +68,7 @@ DOEVENTS
 =INKEY(1)
 
 *==========================================================
-* 2. ФОРМА РЕДАГУВАННЯ (frm_data.scx) - ВИПРАВЛЕНО LOAD
+* 2. Р¤РћР РњРђ Р Р•Р”РђР“РЈР’РђРќРќРЇ (frm_data.scx) - Р’РРџР РђР’Р›Р•РќРћ LOAD
 *==========================================================
 DELETE FILE frm_data.scx
 DELETE FILE frm_data.sct
@@ -79,13 +79,13 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Редагування БД"
+    .Caption = "Р РµРґР°РіСѓРІР°РЅРЅСЏ Р‘Р”"
     .Width = 600
     .Height = 500
     .AutoCenter = .T.
     .DataSession = 2 && Private DataSession
 
-    * --- ВАЖЛИВО: Відкриваємо таблиці в LOAD (до Grid) ---
+    * --- Р’РђР–Р›РР’Рћ: Р’С–РґРєСЂРёРІР°С”РјРѕ С‚Р°Р±Р»РёС†С– РІ LOAD (РґРѕ Grid) ---
     LOCAL lcLoadCode
     lcLoadCode = [SET EXCLUSIVE OFF] + CHR(13) + ;
                  [OPEN DATABASE "TktDB_Norm" SHARED] + CHR(13) + ;
@@ -93,7 +93,7 @@ WITH loForm
                  [USE Passengers IN 0 SHARED]
     .WriteMethod("Load", lcLoadCode)
 
-    * Додавання PageFrame
+    * Р”РѕРґР°РІР°РЅРЅСЏ PageFrame
     .AddObject("pgf1", "PageFrame")
     .pgf1.PageCount = 2
     .pgf1.Width = 580
@@ -102,9 +102,9 @@ WITH loForm
     .pgf1.Left = 10
     .pgf1.Visible = .T.
 
-    * --- Page 1 (Станції) ---
+    * --- Page 1 (РЎС‚Р°РЅС†С–С—) ---
     WITH .pgf1.Page1
-        .Caption = "Станції"
+        .Caption = "РЎС‚Р°РЅС†С–С—"
 
         .AddObject("grd1", "Grid")
         .grd1.Width = 300
@@ -116,7 +116,7 @@ WITH loForm
         .grd1.Visible = .T.
 
         .AddObject("lbl1", "Label")
-        .lbl1.Caption = "Назва:"
+        .lbl1.Caption = "РќР°Р·РІР°:"
         .lbl1.Left = 320
         .lbl1.Top = 20
         .lbl1.Visible = .T.
@@ -128,23 +128,23 @@ WITH loForm
         .txt1.Visible = .T.
 
         .AddObject("cmdAdd", "CommandButton")
-        .cmdAdd.Caption = "ДОДАТИ"
+        .cmdAdd.Caption = "Р”РћР”РђРўР"
         .cmdAdd.Top = 100
         .cmdAdd.Left = 320
         .cmdAdd.Visible = .T.
         .cmdAdd.WriteMethod("Click", [APPEND BLANK] + CHR(13) + [THISFORM.pgf1.Page1.grd1.Refresh])
 
         .AddObject("cmdDel", "CommandButton")
-        .cmdDel.Caption = "ВИДАЛИТИ"
+        .cmdDel.Caption = "Р’РР”РђР›РРўР"
         .cmdDel.Top = 140
         .cmdDel.Left = 320
         .cmdDel.Visible = .T.
         .cmdDel.WriteMethod("Click", [SELECT Stations] + CHR(13) + [DELETE] + CHR(13) + [SKIP] + CHR(13) + [IF EOF()] + CHR(13) + [SKIP -1] + CHR(13) + [ENDIF] + CHR(13) + [THISFORM.Refresh])
     ENDWITH
 
-    * --- Page 2 (Пасажири) ---
+    * --- Page 2 (РџР°СЃР°Р¶РёСЂРё) ---
     WITH .pgf1.Page2
-        .Caption = "Пасажири"
+        .Caption = "РџР°СЃР°Р¶РёСЂРё"
 
         .AddObject("grd2", "Grid")
         .grd2.Width = 300
@@ -156,7 +156,7 @@ WITH loForm
         .grd2.Visible = .T.
 
         .AddObject("cmdAdd", "CommandButton")
-        .cmdAdd.Caption = "ДОДАТИ"
+        .cmdAdd.Caption = "Р”РћР”РђРўР"
         .cmdAdd.Top = 100
         .cmdAdd.Left = 320
         .cmdAdd.Visible = .T.
@@ -169,7 +169,7 @@ DOEVENTS
 =INKEY(1)
 
 *==========================================================
-* 3. ФОРМА ПОШУКУ (frm_search.scx) - ВИПРАВЛЕНО LOAD
+* 3. Р¤РћР РњРђ РџРћРЁРЈРљРЈ (frm_search.scx) - Р’РРџР РђР’Р›Р•РќРћ LOAD
 *==========================================================
 DELETE FILE frm_search.scx
 DELETE FILE frm_search.sct
@@ -180,13 +180,13 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Пошук"
+    .Caption = "РџРѕС€СѓРє"
     .Width = 400
     .Height = 300
     .AutoCenter = .T.
     .DataSession = 2
 
-    * ВАЖЛИВО: Відкриваємо в Load
+    * Р’РђР–Р›РР’Рћ: Р’С–РґРєСЂРёРІР°С”РјРѕ РІ Load
     LOCAL lcLoad
     lcLoad = [SET EXCLUSIVE OFF] + CHR(13) + ;
              [OPEN DATABASE "TktDB_Norm" SHARED] + CHR(13) + ;
@@ -195,7 +195,7 @@ WITH loForm
     .WriteMethod("Load", lcLoad)
 
     .AddObject("lbl1", "Label")
-    .lbl1.Caption = "ID Пасажира:"
+    .lbl1.Caption = "ID РџР°СЃР°Р¶РёСЂР°:"
     .lbl1.Visible = .T.
     .lbl1.Top = 20
     .lbl1.Left = 20
@@ -206,11 +206,11 @@ WITH loForm
     .txtID.Left = 20
 
     .AddObject("cmdSeek", "CommandButton")
-    .cmdSeek.Caption = "Знайти (Index)"
+    .cmdSeek.Caption = "Р—РЅР°Р№С‚Рё (Index)"
     .cmdSeek.Visible = .T.
     .cmdSeek.Left = 150
     .cmdSeek.Top = 38
-    .cmdSeek.WriteMethod("Click", [SEEK VAL(THISFORM.txtID.Value)] + CHR(13) + [IF FOUND()] + CHR(13) + [MESSAGEBOX('Знайдено!')] + CHR(13) + [THISFORM.grdRes.Refresh] + CHR(13) + [ELSE] + CHR(13) + [MESSAGEBOX('Не знайдено')] + CHR(13) + [ENDIF])
+    .cmdSeek.WriteMethod("Click", [SEEK VAL(THISFORM.txtID.Value)] + CHR(13) + [IF FOUND()] + CHR(13) + [MESSAGEBOX('Р—РЅР°Р№РґРµРЅРѕ!')] + CHR(13) + [THISFORM.grdRes.Refresh] + CHR(13) + [ELSE] + CHR(13) + [MESSAGEBOX('РќРµ Р·РЅР°Р№РґРµРЅРѕ')] + CHR(13) + [ENDIF])
 
     .AddObject("grdRes", "Grid")
     .grdRes.RecordSource = "Passengers"
@@ -226,7 +226,7 @@ DOEVENTS
 =INKEY(1)
 
 *==========================================================
-* 4. ФОРМА ЗАПИТІВ (frm_queries.scx) - OK
+* 4. Р¤РћР РњРђ Р—РђРџРРўР†Р’ (frm_queries.scx) - OK
 *==========================================================
 DELETE FILE frm_queries.scx
 DELETE FILE frm_queries.sct
@@ -237,7 +237,7 @@ ASELOBJ(laForm, 1)
 loForm = laForm[1]
 
 WITH loForm
-    .Caption = "Запити"
+    .Caption = "Р—Р°РїРёС‚Рё"
     .Width = 600
     .Height = 400
     .AutoCenter = .T.
@@ -245,7 +245,7 @@ WITH loForm
     .WriteMethod("Load", [OPEN DATABASE "TktDB_Norm" SHARED])
 
     .AddObject("cmdQ1", "CommandButton")
-    .cmdQ1.Caption = "Запит: Розклад"
+    .cmdQ1.Caption = "Р—Р°РїРёС‚: Р РѕР·РєР»Р°Рґ"
     .cmdQ1.Visible = .T.
     .cmdQ1.Top = 20
     .cmdQ1.Left = 20
@@ -270,5 +270,5 @@ KEYBOARD '{CTRL+W}' PLAIN
 DOEVENTS
 =INKEY(1)
 
-MESSAGEBOX("ГОТОВО! Форми виправлено." + CHR(13) + ;
-           "Запустіть frm_menu.scx, тепер дані в Grid повинні бути.", 64, "Успіх")
+MESSAGEBOX("Р“РћРўРћР’Рћ! Р¤РѕСЂРјРё РІРёРїСЂР°РІР»РµРЅРѕ." + CHR(13) + ;
+           "Р—Р°РїСѓСЃС‚С–С‚СЊ frm_menu.scx, С‚РµРїРµСЂ РґР°РЅС– РІ Grid РїРѕРІРёРЅРЅС– Р±СѓС‚Рё.", 64, "РЈСЃРїС–С…")
